@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <a id="buttonMenu">Menu</a>
+    <ul class="menu ocultar">
+        <li><button type="button" id="pen"><a id="text1">Lapiz</a></button></li>
+        <li><a id="text1">Tamaño del pincel</a>
+            <input type="range" min="1" max="100" value="1" id="pSize" name="pTamanio" />
+            <div id="showValue"></div>
+        </li>
+        <li><a id="text1">Color</a>
+            <input type="color" id="color" />
+        </li>
+        <li><button type="button" id="eraser"><a>Goma</a></button></li>
+    </ul>
+    <label for="imageFile" class="custom-file-upload">
+        <i class="fas fa-cloud-upload-alt"></i> <a id="text1">Cargar Imagen</a>
+    </label>
+    <input type="file" id="imageFile" style="display: none;" accept=".png, .jpg, .jpeg">
+
+    <button type="button" id="downloadImage"><a id="text1">Guardar</a></button>
+
+    <button type="button" id="resetPaper"><a id="text1">Resetear Lienzo</a></button>
+
+    <button id="filterIcon"><img src="filtros.png" alt="Icono de Filtro"></button>
+    <ul class="menuFilter ocultar">
+        <li><button type="button" class="filter-option" id="negative"><a id="text1">Negativo</a></button></li>
+        <li><button type="button" class="filter-option" id="sepia"><a id="text1">Sepia</a></button></li>
+        <li><button type="button" class="filter-option" id="binarization">Blanco y negro</button></li>
+        <li><button type="button" class="filter-option" id="onlyEdges"><a id="text1">Contornear</a></button></li>
+        <li><button type="button" class="filter-option" id="blur"><a id="text1">Desenfocar</a></button></li>
+        <li id="range">
+            <a id="text1">Brillo</a>
+            <input type="range" min="-50" max="50" value="0" id="brightness" class="filter-option">
+            <div id="brightnessValue">0</div>
+        </li>
+        <li id="range">
+            <a id="text1">Saturacion</a>
+            <input type="range" min="10" max="80" value="10" id="saturation" class="filter-option">
+            <div id="saturationValue">10</div>
+        </li>
+    </ul>
+    <span id="fileName" class="file-name"></span>
+    <canvas id="canvas"></canvas>
+    <br>
+
+</body>
+<script src="pen.js"></script>
+<script src="eraser.js"></script>
+<script src="main.js"></script>
+<script src="photo.js"></script>
+<script src="negative.js"></script>
+<script src="sepia.js"></script>
+<script src="binarization.js"></script>
+<script src="blur.js"></script>
+<script src="onlyEdges.js"></script>
+</html>

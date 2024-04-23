@@ -1,0 +1,6 @@
+Preguntas:
+puedo realizar el coddigo mas simple haciendo un booleando que si esta goma activo etnonces pen se encuentra desactivado
+incluyendolos ambos dentro del mousemove, mousedown y mouseup. no quise hacerlo porq no sabia si esto era correcto
+Relacionado con la ppregunta anterior la clase eraser no tiene ninguna diferencia con la clase pen, pero en clase
+se habia hablado que al ser dos objetos diferentes tenian q ser dos js diferentes(o al meenos eso entendi)
+por eso mismo le puse como diferencia el tipo de "punta" que tiene el lapiz que se usa en erasor
