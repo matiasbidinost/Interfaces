@@ -5,7 +5,6 @@ class Photo {
         this.width = width;
         this.height = height;
         this.loaded = false;
-        this.imageData = null;
 
     }
     loadImage(fileName) {
@@ -14,37 +13,56 @@ class Photo {
 
         let img = new Image();
         img.src = URL.createObjectURL(fileName);
+        let self = this; // Asignar this a self
         let context = this.ctx;
-        img.onload = function () {
-            const aspectRatio = this.naturalWidth / this.naturalHeight;
+        context.willReadFrequently = true;
+
+        img.onload = () => {
+            const aspectRatio = img.naturalWidth / img.naturalHeight; // Usar img en lugar de this
             let targetWidth = orgWidth;
             let targetHeight = targetWidth / aspectRatio;
             if (targetHeight > orgHeight) {
                 targetHeight = orgHeight;
                 targetWidth = targetHeight * aspectRatio;
             }
-            context.drawImage(this, 0, 0, targetWidth, targetHeight);
+            self.loaded = true;
+            self.ctx.drawImage(img, 0, 0, targetWidth, targetHeight); // Usar img en lugar de this
         };
     }
-    Fnegative(){
-        let filterNegative = new Negative(this.ctx);
-        filterNegative.reDraw();
+    applyFilter(filter) {
+        if (this.loaded) {
+            switch (filter) {
+                case 'Fnegative':
+                    let filterNegative = new Negative(this.ctx);
+                    filterNegative.reDraw();
+                    break;
+                case 'Fsepia':
+                    let filterSepia = new Sepia(this.ctx);
+                    filterSepia.reDraw();
+                    break;
+                case 'Fbinarization':
+                    let filterBinarization = new Binarization(this.ctx);
+                    filterBinarization.reDraw();
+                    break;
+                case 'Fblur':
+                    let filterBlur = new Blur(this.ctx);
+                    filterBlur.reDraw();
+                    break;
+                case 'FonlyEdges':
+                    let filterOnlyEdges = new OnlyEdges(this.ctx);
+                    filterOnlyEdges.reDraw();
+                    break;
+                case 'Fbright':
+                    let filterBright = new Brightness(this.ctx);
+                    filterBright.reDraw();
+                    break; 
+                case 'Fsaturation':
+                    let filterSaturation = new Saturation(this.ctx);
+                    filterSaturation.reDraw();
+                    break;
+            }
+        } else {
+            console.error('La imagen aún no se ha cargado completamente.');
+        }
     }
-    Fsepia(){
-        let filterSepia = new Sepia(this.ctx);
-        filterSepia.reDraw();
-    }
-    Fbinarization(){
-        let filterBinarization = new Binarization(this.ctx);
-        filterBinarization.reDraw();
-    }
-    Fblur(){
-        let filterBlur = new Blur(this.ctx);
-        filterBlur.reDraw();
-    }
-    FonlyEdges(){
-        let filterOnlyEdges = new OnlyEdges(this.ctx);
-        filterOnlyEdges.reDraw();
-    }
-
 }

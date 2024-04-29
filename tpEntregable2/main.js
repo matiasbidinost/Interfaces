@@ -16,12 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let tamanioPen = tamanio.value;//agarra el valor ingresado toma su valor
     let color = document.getElementById("color");
 
+
     let eraserClick = false;
 
 
     //tamaño del canvas
     _canvas.width = (window.innerWidth - 40);
     _canvas.height = (window.innerHeight - 100);
+    //rect almacena el valor de getBounderies para que cuando posiciones el mouse este correcto
     let rect;
 
     //lapiz y mouse
@@ -188,46 +190,46 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".menu").classList.remove("active");
         document.querySelector(".menuFilter").classList.toggle("active");
     });
-    //mostrar valores de los range en filtros
-    function updateRangeValue(inputId, outputId) {
-        let input = document.getElementById(inputId);
-        let output = document.getElementById(outputId);
-        output.textContent = input.value;
-    }
-    updateRangeValue('brightness', 'brightnessValue');
-    updateRangeValue('saturation', 'saturationValue');
-    document.getElementById('brightness').addEventListener('input', function() {
-        updateRangeValue('brightness', 'brightnessValue');
+    //filtro brillo
+    document.getElementById('brightness').addEventListener("click", () => {
+        if (image != null) {
+            image.applyFilter('Fbright');
+        }
     });
-
-    document.getElementById('saturation').addEventListener('input', function() {
-        updateRangeValue('saturation', 'saturationValue');
+    //filtro saturacion
+    document.getElementById('saturation').addEventListener("click", () => {
+        if (image != null) {
+            image.applyFilter('Fsaturation');
+        }
     });
     //filtro negativo
     document.getElementById("negative").addEventListener("click", () => {
         if (image != null) {
-            image.Fnegative();
+            image.applyFilter('Fnegative');
         }
     });
+    //filtro sepia
     document.getElementById("sepia").addEventListener("click", () => {
         if (image != null) {
-            image.Fsepia();
+            image.applyFilter('Fsepia');
         }
     });
+    //filtro binarizacion
     document.getElementById("binarization").addEventListener("click", () => {
         if (image != null) {
-            image.Fbinarization();
+            image.applyFilter('Fbinarization');
         }
     });
+    //filtro difuminar
     document.getElementById("blur").addEventListener("click", () => {
         if (image != null) {
-            image.Fblur();
+            image.applyFilter('Fblur');
         }
     });
+    //filtro solo contorno
     document.getElementById("onlyEdges").addEventListener("click", () => {
         if (image != null) {
-            image.FonlyEdges();
+            image.applyFilter('FonlyEdges');
         }
     });
-
 });

@@ -1,6 +1,6 @@
-Preguntas:
-puedo realizar el coddigo mas simple haciendo un booleando que si esta goma activo etnonces pen se encuentra desactivado
-incluyendolos ambos dentro del mousemove, mousedown y mouseup. no quise hacerlo porq no sabia si esto era correcto
-Relacionado con la ppregunta anterior la clase eraser no tiene ninguna diferencia con la clase pen, pero en clase
-se habia hablado que al ser dos objetos diferentes tenian q ser dos js diferentes(o al meenos eso entendi)
-por eso mismo le puse como diferencia el tipo de "punta" que tiene el lapiz que se usa en erasor
+bugs: no logre solucionar el error de llamar demasiadas veces a getImageData
+-intente pasarla por parametro pero jamas llegaba como debia
+-intente poniendo el willReadFrequenly pero tampoco funciono
+-intente separando en switch and case para asegurarme que se cargue completamente la imagen antes de pasarlo como parametro
+-intente pasandolo como parametro
+A causa de este bug no pude mandar brillo y saturacion como range porque al cargarse tantas veces el getImageData termina colapsando

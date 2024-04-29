@@ -44,7 +44,7 @@ ul {
 
 .menu {
     position: absolute;
-    top: 6%;
+    top: 4%;
     padding: 10px 20px;
     width: 30vh;
     background-color: #444;
@@ -85,11 +85,6 @@ input[type="range"] {
     width: 100%;
     cursor: pointer;
     box-sizing: border-box;
-}
-
-#showValue {
-    margin-left: 90%;
-    /* Mueve el div hacia la derecha del contenedor */
 }
 
 button:hover {
